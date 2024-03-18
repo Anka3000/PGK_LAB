@@ -1,0 +1,4 @@
+repository "PGK_LAB@Anka_3000@cloud"
+  path "/"
+    br "/main"
+    co "/main"
