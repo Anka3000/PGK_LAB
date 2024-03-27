@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -18,10 +19,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
+        /*Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
         movement.Normalize();
 
         if (movement != Vector3.zero)
@@ -29,13 +27,22 @@ public class Player : MonoBehaviour
             Vector3 forwardDirection = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(forwardDirection, Vector3.up);
             transform.rotation = targetRotation;
-        }
+        }*/
 
-        if (Input.GetButtonDown("Jump"))
+        theRB.velocity = new Vector3(horizontalInput * moveSpeed, theRB.velocity.y, verticalInput * moveSpeed);
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontalInput = context.ReadValue<Vector2>().x;
+        verticalInput = context.ReadValue<Vector2>().y;
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             theRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-
-        theRB.velocity = new Vector3(movement.x * moveSpeed, theRB.velocity.y, movement.z * moveSpeed);
     }
 }
