@@ -851,6 +851,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7333381270708434556, guid: cd178f66eb83e4442a2f8c43bceb4b1e, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096378251718190485, guid: cd178f66eb83e4442a2f8c43bceb4b1e, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
