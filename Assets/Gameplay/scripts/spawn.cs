@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    private float spawnTime;
+    private float spawnTime = 2;
     [SerializeField] private GameObject cubePrefab;
     [SerializeField] private float spawnDelay = 2;
 
