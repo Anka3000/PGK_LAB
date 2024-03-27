@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public void Fire(InputAction.CallbackContext context)
     {
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.transform.parent = transform;
         bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
     }
 }

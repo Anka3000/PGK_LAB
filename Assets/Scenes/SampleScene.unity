@@ -371,10 +371,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4052490208185376205, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 625862683}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1986630633}
+    - targetCorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1986630634}
     - targetCorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1986630627}
@@ -384,6 +397,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
   m_PrefabInstance: {fileID: 562249928}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &625862682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625862683}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625862683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625862682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.264, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1986630632}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +689,19 @@ MonoBehaviour:
     m_ActionId: 891ae4f5-40c1-4ec1-b24a-b393ade3df5b
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1986630634}
+        m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+        m_MethodName: Fire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0f52d7dc-129b-42fa-afed-1fb05513a217
     m_ActionName: Player/Fire[/Mouse/rightButton]
   - m_PersistentCalls:
@@ -709,6 +765,39 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!4 &1986630632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4052490208185376205, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+  m_PrefabInstance: {fileID: 562249928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1986630633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562249929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691567c9bdc1d9b4a815aca03ebf2f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 3
+--- !u!114 &1986630634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562249929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871bb3af34b9d3148ab3856bbb6648ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 625862683}
+  bulletPrefab: {fileID: 3928338662548011795, guid: a8e919d2d1c09f546890771547a285f3, type: 3}
+  bulletSpeed: 10
 --- !u!1001 &4994471490346663824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -771,6 +860,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
+  - {fileID: 562249928}
   - {fileID: 1770198159}
   - {fileID: 4994471490346663824}
-  - {fileID: 562249928}

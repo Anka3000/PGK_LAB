@@ -21,6 +21,7 @@ public class Spawn : MonoBehaviour
     {
         spawnTime = Time.time + spawnDelay;
         GameObject newCube = Instantiate(cubePrefab, transform.position, transform.rotation);
+        newCube.transform.parent = transform;
         spawnedObjects.Add(newCube);
     }
 
