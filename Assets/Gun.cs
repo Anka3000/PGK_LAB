@@ -19,5 +19,15 @@ public class Gun : MonoBehaviour
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bullet.transform.parent = transform;
         bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+
+        Bullet bulletScript = GetComponentInChildren<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.ChildMethod();
+        }
+        else
+        {
+            Debug.LogWarning("Bullet component not found on any child object!");
+        }
     }
 }

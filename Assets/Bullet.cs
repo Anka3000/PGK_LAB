@@ -22,4 +22,9 @@ public class Bullet : MonoBehaviour
          Destroy(gameObject);
 
         }
+
+    public void ChildMethod()
+    {
+        Debug.Log("Child method called!");
+    }
 }
