@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed = 5f;
+    private float speed = 5.0f;
+    private float angleInDegrees = 0.0f;
 
     void Update()
     {
-        // Poruszanie siê obiektu wzd³u¿ osi X
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        Vector3 direction = Quaternion.Euler(0, angleInDegrees, 0) * Vector3.forward;
+
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 }
