@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     private float jumpForce = 7.0f;
     private float horizontalInput;
     private float verticalInput;
+    public bool grounded;
+    public int maxJumpCount = 2;
+    public int jumpsRemaining = 0;
 
     private void Start()
     {
@@ -40,9 +43,27 @@ public class Player : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if ((context.performed) && (jumpsRemaining > 0))
         {
             theRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpsRemaining -= 1;
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision) // if player hit the floor
+    {
+        if(collision.gameObject.tag == "Floor")
+        {
+            grounded = true;
+            jumpsRemaining = maxJumpCount;
+        }
+    }
+
+    public void OnCollisionExit(Collision collision) // if player touch the floor
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            grounded = false;
         }
     }
 }
