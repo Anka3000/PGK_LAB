@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void Fire(InputAction.CallbackContext context)

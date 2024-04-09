@@ -7,10 +7,14 @@ public class Player : MonoBehaviour
 {
     public Rigidbody theRB;
     private float moveSpeed = 15.0f;
+    private float maxSpeed = 30.0f;
     private float jumpForce = 7.0f;
     private float horizontalInput;
     private float verticalInput;
+
     public bool grounded;
+    public bool isMoving = false;
+
     public int maxJumpCount = 2;
     public int jumpsRemaining = 0;
 
@@ -22,16 +26,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        /*Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
-        movement.Normalize();
-
-        if (movement != Vector3.zero)
-        {
-            Vector3 forwardDirection = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(forwardDirection, Vector3.up);
-            transform.rotation = targetRotation;
-        }*/
-
+        float currentSpeed = isMoving ? maxSpeed : moveSpeed;
+        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput).normalized * currentSpeed;
         theRB.velocity = new Vector3(horizontalInput * moveSpeed, theRB.velocity.y, verticalInput * moveSpeed);
     }
 
@@ -39,6 +35,24 @@ public class Player : MonoBehaviour
     {
         horizontalInput = context.ReadValue<Vector2>().x;
         verticalInput = context.ReadValue<Vector2>().y;
+    }
+
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            
+            isMoving = true;
+            moveSpeed++;
+            if(moveSpeed == maxSpeed)
+            {
+                Debug.Log("Osi¹gniêto maksymaln¹ prêdkoœæ!");
+            }
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            isMoving = false;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
