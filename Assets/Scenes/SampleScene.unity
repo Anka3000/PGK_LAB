@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ed9ec8d25826f774e89e350ad0560730, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +224,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.93, y: 6.825, z: 19.64}
-  m_LocalScale: {x: 1.2, y: 0.054425, z: 1.2}
+  m_LocalScale: {x: 2, y: 0.054425, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -532,6 +532,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9221648547107915551, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221648547107915551, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.63958776
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221648547107915551, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.24342468
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221648547107915551, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.6754716
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1585036748221118044, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
     m_RemovedGameObjects: []
@@ -818,7 +834,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ea47376c9618324b96d123eb786c924, type: 2}
+  - {fileID: 2100000, guid: ed9ec8d25826f774e89e350ad0560730, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -858,7 +874,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36.25, y: 6.825, z: 19.64}
-  m_LocalScale: {x: 1.2, y: 0.054425, z: 1.2}
+  m_LocalScale: {x: 2, y: 0.054425, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 991751189}
