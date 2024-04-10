@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
     public int maxJumpCount = 2;
     public int jumpsRemaining = 0;
 
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 30.0f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
+
     private void Start()
     {
         theRB = GetComponent<Rigidbody>();
@@ -49,6 +55,29 @@ public class Player : MonoBehaviour
                 theRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 jumpsRemaining -= 1;
             }
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if ((context.performed) && canDash)
+        {
+            StartCoroutine(PerformDash());
+        }
+    }
+
+    private IEnumerator PerformDash()
+    {
+        canDash = false;
+        isDashing = true;
+        theRB.useGravity = false;
+        float originalSpeed = moveSpeed;
+        moveSpeed = dashingPower;
+        yield return new WaitForSeconds(dashingTime);
+        theRB.useGravity = true;
+        moveSpeed = originalSpeed;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 
     public void OnCollisionEnter(Collision collision) // if player hit the floor
