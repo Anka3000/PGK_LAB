@@ -24,7 +24,6 @@ Shader "Unlit/SkyReflectionWater"
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.normal = UnityObjectToWorldNormal(v.normal);
                 
-                // Wave effect
                 float3 offset = o.normal * sin(_Time.y * 2 + v.vertex.x * 0.1);
                 o.pos.xyz += offset;
 
@@ -33,21 +32,17 @@ Shader "Unlit/SkyReflectionWater"
         
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the default reflection cubemap, using the reflection vector
                 half4 skyData = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, i.worldRefl);
-                // decode cubemap data into actual color
+
                 half3 skyColor = DecodeHDR (skyData, unity_SpecCube0_HDR);
                 
-                // Define water color
                 half3 waterColor = half3(0.8, 0.08, 0.66);
                 
-                // Mix sky color with water color
-                skyColor = lerp(skyColor, waterColor, 0.5); // Adjust the blending factor as needed
+                skyColor = lerp(skyColor, waterColor, 0.5); 
                 
-                // output it!
                 fixed4 c = 0;
                 c.rgb = skyColor;
-                c.a = 0.5; // Set the transparency level (0 - fully transparent, 1 - fully opaque)
+                c.a = 0.5; 
                 return c;
             }
             ENDCG
