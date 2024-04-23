@@ -7,6 +7,7 @@ Shader "Custom/MetallicWithGlossAndReflection"
         _Glossiness ("Glossiness", Range(0,1)) = 0.5
         _SpecularColor ("Specular Color", Color) = (1, 1, 1, 1)
         _ReflectionTex ("Reflection Texture", 2D) = "white" {} 
+        _CustomTex ("Custom Texture", 2D) = "white" {} 
     }
     SubShader
     {
@@ -19,6 +20,7 @@ Shader "Custom/MetallicWithGlossAndReflection"
         
         sampler2D _MainTex;
         sampler2D _ReflectionTex; 
+        sampler2D _CustomTex; 
         half _Metallic;
         half _Glossiness;
         fixed4 _SpecularColor;
@@ -33,16 +35,21 @@ Shader "Custom/MetallicWithGlossAndReflection"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+            // kolor odbicia
             o.Albedo = c.rgb;
+            // poziom metalicznoœci
             o.Metallic = _Metallic;
+            // poziom po³ysku
             o.Smoothness = _Glossiness;
-            // Dodaj b³ysk
+            // b³ysk
             half spec = pow(saturate(dot(reflect(-IN.viewDir, o.Normal), normalize(IN.worldPos - _WorldSpaceCameraPos))), 10);
             o.Emission = _SpecularColor.rgb * spec;
-            // Dodaj lustrzane odbicie
-            o.Normal = reflect(-IN.viewDir, o.Normal); 
-            fixed4 reflColor = tex2D(_ReflectionTex, IN.uv_MainTex); 
-            o.Albedo += reflColor.rgb; 
+            // lustrzane odbicie
+            o.Normal = reflect(IN.viewDir, o.Normal); 
+            fixed4 reflColor = tex2D(_ReflectionTex, IN.uv_MainTex);
+            o.Albedo += reflColor.rgb;
+            fixed4 customColor = tex2D(_CustomTex, IN.uv_MainTex); // kolor z dowolnej tekstury jest pobierany
+            o.Albedo *= customColor.rgb;
         }
         ENDCG
     } 
