@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
+    public ParticleSystem dust;
+
     private void Start()
     {
         theRB = GetComponent<Rigidbody>();
@@ -45,6 +47,8 @@ public class Player : MonoBehaviour
     {
         horizontalInput = context.ReadValue<Vector2>().x;
         verticalInput = context.ReadValue<Vector2>().y;
+        if(grounded == true)
+            dust.Play();
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -53,6 +57,7 @@ public class Player : MonoBehaviour
             if ((context.performed) && (jumpsRemaining > 0))
             {
                 theRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                dust.Play();
                 jumpsRemaining -= 1;
             }
     }
@@ -62,6 +67,7 @@ public class Player : MonoBehaviour
         if ((context.performed) && canDash)
         {
             StartCoroutine(PerformDash());
+            dust.Play();
         }
     }
 
@@ -95,5 +101,10 @@ public class Player : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 }
