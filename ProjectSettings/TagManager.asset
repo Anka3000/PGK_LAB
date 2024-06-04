@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Receiver
   - Sender
+  - Water
   layers:
   - Default
   - TransparentFX
