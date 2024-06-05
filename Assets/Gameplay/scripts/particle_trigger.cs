@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class particle_trigger : MonoBehaviour
+public class ParticleTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject splashParticlePrefab;
-    [SerializeField] private string waterTag = "Water"; 
+    [SerializeField] private string waterTag = "Water";
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag(waterTag))
+        if (collision.gameObject.CompareTag(waterTag))
         {
-            // pozycja kolizji
-            Vector3 splashPosition = other.ClosestPoint(transform.position);
+            // Pozycja kolizji - pierwszy punkt kontaktu
+            Vector3 splashPosition = collision.contacts[0].point;
 
             Instantiate(splashParticlePrefab, splashPosition, Quaternion.identity);
         }

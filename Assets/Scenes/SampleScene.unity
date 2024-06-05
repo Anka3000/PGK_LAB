@@ -10508,6 +10508,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1986630627}
+    - targetCorrespondingSourceObject: {fileID: 9066633825179295685, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1986630635}
     - targetCorrespondingSourceObject: {fileID: 5422161419316454968, guid: ba8028943bb13bd4ebf329067d341a2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1861318215}
@@ -11021,7 +11024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &866822395
 Transform:
   m_ObjectHideFlags: 0
@@ -11306,7 +11309,7 @@ GameObject:
   - component: {fileID: 1072266350}
   m_Layer: 0
   m_Name: floor_water
-  m_TagString: Floor
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16824,6 +16827,20 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 625862683}
   bulletPrefab: {fileID: 3928338662548011795, guid: a8e919d2d1c09f546890771547a285f3, type: 3}
   bulletSpeed: 10
+--- !u!114 &1986630635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562249929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1a1fd845367c04192235318ac1bef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splashParticlePrefab: {fileID: 6592245611223831709, guid: a045c090946e05b4ba3f9707c78882bb, type: 3}
+  waterTag: Water
 --- !u!4 &2080127265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5637319593996484735, guid: a045c090946e05b4ba3f9707c78882bb, type: 3}
