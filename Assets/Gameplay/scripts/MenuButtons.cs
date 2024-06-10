@@ -16,4 +16,10 @@ public class MenuButtons : MonoBehaviour
         Debug.Log("Exit game!");
         Application.Quit();
     }
+
+    public void ExitLevel()
+    {
+        Debug.Log("Back to menu");
+        SceneManager.LoadScene(0);
+    }
 }

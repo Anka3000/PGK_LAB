@@ -22,24 +22,18 @@ public class Player : MonoBehaviour
 
     public ParticleSystem dust;
 
+    private GameController gameController;  // Add this line
+
     private void Start()
     {
         theRB = GetComponent<Rigidbody>();
         theRB.freezeRotation = true;
+
+        gameController = FindObjectOfType<GameController>();  // Initialize the gameController
     }
 
     void Update()
     {
-        /*Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
-        movement.Normalize();
-
-        if (movement != Vector3.zero)
-        {
-            Vector3 forwardDirection = Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(forwardDirection, Vector3.up);
-            transform.rotation = targetRotation;
-        }*/
-
         theRB.velocity = new Vector3(horizontalInput * moveSpeed, theRB.velocity.y, verticalInput * moveSpeed);
     }
 
@@ -47,7 +41,7 @@ public class Player : MonoBehaviour
     {
         horizontalInput = context.ReadValue<Vector2>().x;
         verticalInput = context.ReadValue<Vector2>().y;
-        if(grounded == true)
+        if (grounded == true)
             dust.Play();
     }
 
@@ -92,6 +86,10 @@ public class Player : MonoBehaviour
         {
             grounded = true;
             jumpsRemaining = maxJumpCount;
+        }
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            gameController.GameOver();
         }
     }
 
